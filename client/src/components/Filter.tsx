@@ -6,7 +6,7 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
   const [status, setStatus] = useState('');
-  const [description, setDescription] = useState('');
+  const [description] = useState('');
 
   const handleFilterChange = () => {
     onFilterChange({ status, description });

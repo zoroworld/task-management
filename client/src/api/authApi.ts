@@ -24,13 +24,9 @@ export const signup = async (userData: SignupData) => {
 
 
 
-interface LoginRequest {
-  email: string;
-  password: string;
-}
 
 
-export const login = async ({ email, password }: LoginRequest) => {
+export const login = async (email: string, password : string) => {
   try {
     // Send the LoginRequest object with email and password
     const response = await axios.post(
@@ -46,10 +42,14 @@ export const login = async ({ email, password }: LoginRequest) => {
 
 
     if (response.data.success) {
-      loginUser(response.data);
+      localStorage.setItem('authToken', response.data.result.token);
+      localStorage.setItem('user', JSON.stringify(response.data.result.user));
+  
+  
+      console.log('Login successful', response.data.user);
       return { success: true, token: response.data.result.token, user: response.data.result.user }; 
     } else {
-
+      console.log('Login failed:',  response.data.message);
       return { success: false, message: response.data.message || 'Invalid credentials' };
     }
   } catch (error) {
@@ -63,21 +63,7 @@ export const login = async ({ email, password }: LoginRequest) => {
 };
 
 
-// Login function to handle the login and then set user
-const loginUser = async (data) => {
-  console.log(data);
-  
-  if (data.success) {
- 
-    localStorage.setItem('authToken', data.result.token);
-    localStorage.setItem('user', JSON.stringify(data.result.user));
 
-
-    console.log('Login successful', data.user);
-  } else {
-    console.log('Login failed:', data.message);
-  }
-};
 
 export const logout = () => {
   localStorage.removeItem('authToken');
