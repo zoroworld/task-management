@@ -8,7 +8,7 @@
 
 # Setup Instructions
 
-# clone the git
+## clone the git
   git clone https://github.com/zoroworld/task-management.git
 
 ## Client folder
