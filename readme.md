@@ -95,12 +95,13 @@ in postman body
   "status": "completed"
 }
 
-
+- to get api post man instead http://localhost:8080 use  https://task-management-lyart-beta.vercel.app 
 
 
 # Deployment
 - frontend :-   https://task-management-2a5n8sm7j-zoroworlds-projects.vercel.app/login
-- backend :- https://task-management-kw78s81gj-zoroworlds-projects.vercel.app/
+- backend :- https://task-management-lyart-beta.vercel.app
+
 
 
 
