@@ -98,4 +98,6 @@ in postman body
 
 
 
-
+# Deployment
+- frontend :-   https://task-management-2a5n8sm7j-zoroworlds-projects.vercel.app/login
+- backend :- https://task-management-kw78s81gj-zoroworlds-projects.vercel.app/
