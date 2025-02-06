@@ -8,24 +8,19 @@
 
 # Setup Instructions
 
-## Node
-- clone the git
+# clone the git
   git clone https://github.com/zoroworld/task-management.git
-- In client
+
+## Client folder
   cd client
   npm install 
   npm run dev
-- In server
+
+## Server folder
   cd server
   npm install
   npm start
 
-## React
-- npm create vite@latest
-- select react
-- select typescript + src
-- here see all tailwind setup for vite
-  https://tailwindcss.com/docs/installation/using-vite
 
 
 
