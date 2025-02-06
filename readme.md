@@ -12,14 +12,14 @@
   git clone https://github.com/zoroworld/task-management.git
 
 ## Client folder
-  cd client
-  npm install 
-  npm run dev
+  - cd client
+  - npm install 
+  - npm run dev
 
 ## Server folder
-  cd server
-  npm install
-  npm start
+  - cd server
+  - npm install
+  - npm start
 
 
 
