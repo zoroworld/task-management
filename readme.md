@@ -21,6 +21,9 @@
   - npm install
   - npm start
 
+## no need for setup db
+  - it is in mongodb atlass cloud cluster
+
 
 
 
