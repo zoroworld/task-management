@@ -3,7 +3,7 @@ import { logout } from '../api/authApi';
 import { getTaskById, createTask, updateTask, completeTask, deleteTask } from '../api/taskApi';
 import TaskList from './TaskList';
 
-interface Task {
+type Task = {
   _id: string;  // Add _id here
   title: string;
   description: string;
