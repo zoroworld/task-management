@@ -13,9 +13,14 @@ const app = express();
 app.use(express.json());
 
 
-app.use(cors({ origin: process.env.CQRS_SITE, credentials: true }));
-app.use(cors());
+app.use(cors({ 
+  origin: process.env.CQRS_SITE, 
+  credentials: true, 
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 
+app.options("*", cors());
 
 
 app.use("/api/auth", authRoutes);
