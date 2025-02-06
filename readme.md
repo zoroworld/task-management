@@ -9,20 +9,16 @@
 # Setup Instructions
 
 ## Node
-- npm init -y 
-- npm install typescript --save--dev
-- npm i -D @types/node 
-- npm install -D ts-node
-- npm install -D nodemon
-- npm i express body-parser cookie-parser compression cors
-- npm i -D @types/express @types/body-parser @types/cookie-parser @types/compression @types/cors
-- npm install mongoose
-- npm i -D  @types/mongoose
-- npm install bcryptjs
-- npm i -D @types/ bcryptjs
-- npm install dotenv 
-- npm install @types/dotenv
-- npm install cqrs
+- clone the git
+  git clone https://github.com/zoroworld/task-management.git
+- In client
+  cd client
+  npm install 
+  npm run dev
+- In server
+  cd server
+  npm install
+  npm start
 
 ## React
 - npm create vite@latest
