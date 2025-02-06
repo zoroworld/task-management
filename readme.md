@@ -99,7 +99,7 @@ in postman body
 
 
 # Deployment
-- frontend :-   https://task-management-2a5n8sm7j-zoroworlds-projects.vercel.app/login
+- frontend :-https://task-management-pi-taupe.vercel.app/login
 - backend :- https://task-management-lyart-beta.vercel.app
 
 
