@@ -17,9 +17,10 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    console.log(email , password);
+    
     try {
-      const response: LoginResponse = await login(email, password );
+      const response: LoginResponse = await login(email, password);
       if (response.success) {
         navigate('/dashboard');
       } else {

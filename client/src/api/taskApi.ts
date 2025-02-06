@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getHeaders } from './headers';
 
-const API_URL = `${import.meta.env.BASE_URL}/tasks`;
+const API_URL = `${import.meta.env.VITE_BASEURL}/tasks`;
 
 
 export const getTaskById = async () => {

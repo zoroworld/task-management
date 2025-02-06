@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { getHeaders } from './headers';
 
-const API_URL = `${import.meta.env.BASE_URL}/auth`;
+const API_URL = `${import.meta.env.VITE_BASEURL}/auth`;
+
+
 
 interface SignupData {
   name: string;
@@ -20,12 +22,14 @@ interface SignupResponse {
 
 export const signup = async (userData: SignupData): Promise<SignupResponse> => {
   try {
+    console.log( API_URL);
+    
     const response = await axios.post<SignupResponse>(`${API_URL}/signup`, userData, {
       headers: getHeaders(),
     });
     return response.data;
   } catch (error) {
-    console.error('Login error'); 
+    console.error('Login error: '+ error); 
     throw error
   }
 };
