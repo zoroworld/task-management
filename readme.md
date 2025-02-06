@@ -28,7 +28,7 @@
 
 Open postman
 
-## for user
+## for user API
 
 POST http://localhost:8080/api/auth/signup
 
@@ -50,7 +50,7 @@ in postman body
   "email": "silpa@example.com",
   "password": "silpa"
 }
-## for task
+## for task API
 
 http://localhost:8080/api/tasks/
 
