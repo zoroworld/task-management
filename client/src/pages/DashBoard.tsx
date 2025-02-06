@@ -3,7 +3,12 @@ import { logout } from '../api/authApi';
 import { getTaskById, createTask, updateTask, completeTask, deleteTask } from '../api/taskApi';
 import TaskList from './TaskList';
 
-
+interface Task {
+  _id: string;  // Add _id here
+  title: string;
+  description: string;
+  status: 'pending' | 'completed';
+}
 
 interface User {
   name: string;
@@ -14,9 +19,9 @@ interface User {
 
 const Dashboard: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState({ title: '', description: '', status: 'pending' });
-  const [editTask, setEditTask] = useState(null);
+  const [editTask, setEditTask] = useState<Task | null>(null);
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
