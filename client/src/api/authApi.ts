@@ -11,14 +11,22 @@ interface SignupData {
   phone: string;
 }
 
-export const signup = async (userData: SignupData) => {
+interface SignupResponse {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  result: any;
+  success: boolean;
+  message?: string;
+}
+
+export const signup = async (userData: SignupData): Promise<SignupResponse> => {
   try {
-    const response = await axios.post(`${API_URL}/signup`, userData, {
+    const response = await axios.post<SignupResponse>(`${API_URL}/signup`, userData, {
       headers: getHeaders(),
     });
     return response.data;
-  } catch (error: any) {
-    return { success: false, message: error?.message || 'Something went wrong' };
+  } catch (error) {
+    console.error('Login error'); 
+    throw error
   }
 };
 

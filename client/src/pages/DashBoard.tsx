@@ -2,13 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { logout } from '../api/authApi';
 import { getTaskById, createTask, updateTask, completeTask, deleteTask } from '../api/taskApi';
 import TaskList from './TaskList';
-
-type Task = {
-  _id: string;  // Add _id here
-  title: string;
-  description: string;
-  status: 'pending' | 'completed';
-}
+import { Task } from './type';
 
 interface User {
   name: string;
@@ -31,10 +25,17 @@ const Dashboard: React.FC = () => {
     fetchTasks();
   }, []);
 
+
   const fetchTasks = async () => {
     try {
       const data = await getTaskById();
-      setTasks(data.tasks);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setTasks(data.tasks.map((task: any) => ({
+        id: task._id, 
+        title: task.title,
+        description: task.description,
+        status: task.status,
+      })));
     } catch (error) {
       console.error('Failed to fetch tasks:', error);
     }
@@ -63,7 +64,7 @@ const Dashboard: React.FC = () => {
   const handleUpdateTask = async () => {
     if (!editTask) return;
     try {
-      await updateTask(editTask._id, {
+      await updateTask(editTask.id, {
         title: editTask.title,
         description: editTask.description,
       });
@@ -133,7 +134,7 @@ const Dashboard: React.FC = () => {
               <h3 className="text-lg font-semibold mb-2">Pending Tasks</h3>
               <ul>
                 {tasks?.filter((task) => task.status === 'pending').map((task) => (
-                  <li key={task._id} className="border-b py-2 flex flex-col justify-between">
+                  <li key={task.id} className="border-b py-2 flex flex-col justify-between">
                     <div>
                       {task.status}
                       <h4 className="font-semibold">{task.title}</h4>
@@ -141,7 +142,7 @@ const Dashboard: React.FC = () => {
                     </div>
                     <div className="flex justify-between mt-2">
                       <button
-                        onClick={() => handleCompleteTask(task._id)}
+                        onClick={() => handleCompleteTask(task.id)}
                         className="bg-green-500 text-white px-3 py-1 rounded-lg"
                       >
                         Task Completed
@@ -153,7 +154,7 @@ const Dashboard: React.FC = () => {
                         Edit
                       </button>
                       <button
-                        onClick={() => handleDeleteTask(task._id)}
+                        onClick={() => handleDeleteTask(task.id)}
                         className="bg-red-500 text-white px-3 py-1 rounded-lg"
                       >
                         Delete
@@ -168,7 +169,7 @@ const Dashboard: React.FC = () => {
               <h3 className="text-lg font-semibold mb-2">Completed Tasks</h3>
               <ul>
                 {tasks?.filter((task) => task.status === 'completed').map((task) => (
-                  <div key={task._id}>
+                  <div key={task.id}>
                     <li className="border-b py-2">
                       <div>
                         <h4 className="font-semibold">{task.title}</h4>
@@ -176,7 +177,7 @@ const Dashboard: React.FC = () => {
                       </div>
                       <div className="flex justify-between mt-2">
                         <button
-                          onClick={() => handleCompleteTask(task._id)}
+                          onClick={() => handleCompleteTask(task.id)}
                           className="bg-red-500 text-white px-3 py-1 rounded-lg"
                         >
                           Delete

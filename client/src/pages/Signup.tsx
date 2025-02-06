@@ -9,12 +9,6 @@ interface FormData {
   email: string;
   password: string;
 }
-
-interface SignupResponse {
-  success: boolean;
-  message?: string;
-}
-
 const Signup: React.FC = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
@@ -34,16 +28,16 @@ const Signup: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-
+  
     try {
-      const response: SignupResponse = await signup(formData);
+      const response = await signup(formData); 
       if (response.success) {
-        navigate('/login'); // Redirect to login page after successful signup
+        navigate('/login'); 
       } else {
         setError(response.message || 'Signup failed.');
       }
-    } catch (err: any) {
-      setError('Signup failed. Please try again.' + err);
+    } catch (err) {
+      setError('Signup failed. Please try again. ' + (err instanceof Error ? err.message : 'Unknown error'));
     }
   };
 

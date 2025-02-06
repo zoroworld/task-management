@@ -19,12 +19,13 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response: LoginResponse = await login({ email, password });
+      const response: LoginResponse = await login(email, password );
       if (response.success) {
         navigate('/dashboard');
       } else {
         setError('Invalid credentials, please try again.');
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError('Something went wrong. Please try again later.' + err);
     }

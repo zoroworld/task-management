@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
 import Search from '../components/Search';
 
-interface Task {
-  id: number;
-  title: string;
-  status: string;
-  description: string; // description should be a string
-}
+import { Task } from './type';
 
+// Define the expected props for TaskList component
 interface TaskListProps {
-  tasks: Task[]; // Define tasks as a prop passed to TaskList
+  tasks: Task[]; // tasks should be an array of Taske
 }
 
 const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
-  const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
+  const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks); // Corrected type for filteredTasks
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [filter, setFilter] = useState<{ status: string }>({
     status: '',
@@ -49,7 +45,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
 
   useEffect(() => {
     applyFiltersAndSearch();
-  }, [filter, searchQuery, tasks]); 
+  }, [filter, searchQuery, tasks]);
 
   return (
     <div className="p-4">
